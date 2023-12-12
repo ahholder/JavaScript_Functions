@@ -83,7 +83,8 @@ function triangle(side1, side2, side3) {
         return false;
     }
     function isosceles(side1, side2, side3) {
-        if ((side1 == side2 && side2 != side3) || (side1 == side3 && side3 != side2) || (side2 == side3 && side3 != side1)) return true;
+        //if ((side1 == side2 && side2 != side3) || (side1 == side3 && side3 != side2) || (side2 == side3 && side3 != side1)) return true; //Old Method
+        if (equilateral(side1, side2, side3) == false && scalene(side1, side2, side3) == false) return true; //Revised Method #1
         return false;
     }
     function equilateral(side1, side2, side3) {
@@ -103,10 +104,10 @@ function triangle(side1, side2, side3) {
     }
 }
 
-//triangle(5, 5, 5); //Test
-//triangle(10, 20, 5); //Test
-//triangle(10, 10, 20); //Test
-//triangle(0, 0, 0); //Test
+triangle(5, 5, 5); //Test
+triangle(10, 20, 5); //Test
+triangle(10, 10, 20); //Test
+triangle(0, 0, 0); //Test
 
 // Bonus Exercise 5 Section
 console.log("EXERCISE 5:\n==========\n");
