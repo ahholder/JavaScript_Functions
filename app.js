@@ -76,37 +76,38 @@ function whichQuadrant(x, y) {
 // Exercise 4 Section
 console.log("EXERCISE 4:\n==========\n");
 function triangle(side1, side2, side3) {
+
+    let type = "";
+
+    //Determine Validity
     function validTriangle(side1, side2, side3) {
         if (side1 + side2 > side3) return true;
         if (side1 + side3 > side2) return true;
         if (side2 + side3 > side1) return true;
         return false;
     }
-    function isosceles(side1, side2, side3) {
-        if ((side1 == side2 && side2 != side3) || (side1 == side3 && side3 != side2) || (side2 == side3 && side3 != side1)) return true;
-        return false;
-    }
-    function equilateral(side1, side2, side3) {
-        if (side1 == side2 && side2 == side3) return true;
-        return false;
-    }
-    function scalene(side1, side2, side3) {
-        if (side1 != side2 && side2 != side3 && side1 != side3) return true;
-        return false;
-    }
-    if (validTriangle(side1, side2, side3) == false) {
-        console.log(`${side1}, ${side2}, and ${side3} make an invalid triangle!`);
+
+    //Determine Type
+    if (validTriangle(side1, side2, side3)) {
+        if (side1 == side2 && side2 == side3) {
+            type = "an equilateral";
+        } else if (side1 == side2 || side2 == side3 || side1 == side3) {
+            type = "an isosceles";
+        } else {
+            type = "a scalene";
+        }
     } else {
-        if (isosceles(side1, side2, side3) == true) console.log(`${side1}, ${side2}, and ${side3} make an isosceles triangle!`);
-        if (equilateral(side1, side2, side3) == true) console.log(`${side1}, ${side2}, and ${side3} make an equilateral triangle!`);
-        if (scalene(side1, side2, side3) == true) console.log(`${side1}, ${side2}, and ${side3} make a scalene triangle!`);
+        type = "an invalid";
     }
+
+    //Convey Type
+    console.log(`${side1}, ${side2}, and ${side3} make ${type} triangle!`);
 }
 
-triangle(5, 5, 5); //Test
-triangle(10, 20, 5); //Test
-triangle(10, 10, 20); //Test
-triangle(0, 0, 0); //Test
+//triangle(5, 5, 5); //Test
+//triangle(10, 20, 5); //Test
+//triangle(10, 10, 20); //Test
+//triangle(0, 0, 0); //Test
 
 // Bonus Exercise 5 Section
 console.log("EXERCISE 5:\n==========\n");
